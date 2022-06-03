@@ -1,7 +1,6 @@
 - name: Install wanted packages
   hosts: all localhost
   vars:
-    is_tw: true # Change if you're on leap
     wanted_packages:
       development:
         - code
@@ -60,4 +59,3 @@
         name: '*'
         state: dist-upgrade
         allow_vendor_change: true
-      when: is_tw == true
