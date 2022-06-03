@@ -1,0 +1,35 @@
+- name: Configure the wanted repositories
+  hosts: all localhost
+  vars:
+    enable_packman: true
+    wanted_repos:
+      hardware:
+        - name: hardware
+        - repo: 'https://mirrorcache.opensuse.org/repositories/hardware/openSUSE_Tumbleweed/'
+      dotnet:
+        - name: dotnet
+        - repo: 'https://packages.microsoft.com/opensuse/15/prod/'
+      vscode:
+        - name: vscode
+        - repo: 'https://packages.microsoft.com/yumrepos/vscode'
+  tasks:
+    - name: Add the Packman repository
+      community.general.zypper_repository:
+        name: packman
+        repo: 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/'
+        state: present
+        auto_import_keys: true
+      when: enable_packman == true
+
+    - name: Add other wanted repositories
+      community.general.zypper_repository:
+        name: '{{ item.value[0].name }}'
+        repo: '{{ item.value[1].repo }}'
+        state: present
+        auto_import_keys: true
+      loop: "{{ wanted_repos | dict2items }}"
+
+    - name: Refresh all repositories
+      community.general.zypper_repository:
+        repo: '*'
+        runrefresh: true

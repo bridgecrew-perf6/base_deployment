@@ -1,0 +1,8 @@
+- name: Configure Flathub repository
+  hosts: all localhost
+  tasks:
+    - name: Add Flathub remote
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo

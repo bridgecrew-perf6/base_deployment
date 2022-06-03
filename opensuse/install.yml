@@ -1,0 +1,63 @@
+- name: Install wanted packages
+  hosts: all localhost
+  vars:
+    is_tw: true # Change if you're on leap
+    wanted_packages:
+      development:
+        - code # Visual Studio Code
+        - dotnet-sdk-6.0 # .NET SDK
+        - neovim # Better version of VIM
+        - zsh # Better than BASH
+        - gcc # C Compiler
+        - gcc-c++ # C++ Compiler
+        - git # Git SCM
+        - make # GNU Make
+        - cmake # CMake
+      packaging:
+        - osc # openSUSE Commander
+      office:
+        - libreoffice
+        - libreoffice-writer
+        - libreoffice-impress
+        - libreoffice-calc
+        - libreoffice-math
+      torrenting:
+        - Fragments
+      virtualisation:
+        - qemu
+        - qemu-kvm
+        - libvirt
+        - virt-manager
+      tex:
+        - gummi
+      recording:
+        - obs-studio
+        - handbrake-gtk
+      drawing:
+        - inkscape
+      printing:
+        - hplip
+      gaming:
+        - steam
+        - supertuxkart
+        - xonotic
+        - lutris
+      internet:
+        - element-desktop
+      desktop_integration:
+        - libreoffice-gnome
+        - qt5ct
+  tasks:
+    - name: Install all wanted packages
+      community.general.zypper:
+        name: '{{ item.value }}'
+        type: package
+        state: present
+      loop: "{{ wanted_packages | dict2items }}"
+    
+    - name: Update the system
+      community.general.zypper:
+        name: '*'
+        state: dist-upgrade
+        allow_vendor_change: true
+      when: is_tw == true

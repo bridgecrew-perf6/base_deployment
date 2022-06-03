@@ -1,0 +1,21 @@
+- name: Install wanted flatpaks
+  hosts: all localhost
+  vars:
+    wanted_apps:
+      - com.bitwarden.desktop
+      - com.github.tchx84.Flatseal
+      - com.jgraph.drawio.desktop
+      - com.mattjakeman.ExtensionManager
+      - io.posidon.Paper
+    wanted_themes:
+      - org.gtk.Gtk3theme.adw-gtk3-dark
+  tasks:
+    - name: Install wanted flatpaks
+      community.general.flatpak:
+        name: '{{ wanted_apps }}'
+        state: present
+    
+    - name: Install wanted themes
+      community.general.flatpak:
+        name: '{{ wanted_themes }}'
+        state: present
