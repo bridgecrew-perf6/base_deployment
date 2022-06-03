@@ -4,17 +4,17 @@
     is_tw: true # Change if you're on leap
     wanted_packages:
       development:
-        - code # Visual Studio Code
-        - dotnet-sdk-6.0 # .NET SDK
-        - neovim # Better version of VIM
-        - zsh # Better than BASH
-        - gcc # C Compiler
-        - gcc-c++ # C++ Compiler
-        - git # Git SCM
-        - make # GNU Make
-        - cmake # CMake
+        - code
+        - dotnet-sdk-6.0
+        - neovim
+        - zsh
+        - gcc
+        - gcc-c++
+        - git
+        - make
+        - cmake
       packaging:
-        - osc # openSUSE Commander
+        - osc
       office:
         - libreoffice
         - libreoffice-writer
