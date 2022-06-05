@@ -46,6 +46,8 @@
       desktop_integration:
         - libreoffice-gnome
         - qt5ct
+      distro:
+        - mirrorsorcerer
   tasks:
     - name: Install all wanted packages
       community.general.zypper:
