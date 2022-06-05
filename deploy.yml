@@ -1,19 +1,15 @@
 - name: Configure Flatpak
   become: true
-  become_user: root
   ansible.builtin.import_playbook: flatpak/configure.yml
 
 - name: Install wanted flatpaks
   become: true
-  become_user: root
   ansible.builtin.import_playbook: flatpak/install.yml
 
 - name: Configure openSUSE repos
   become: true
-  become_user: root
   ansible.builtin.import_playbook: opensuse/configure.yml
 
 - name: Install wanted packages
   become: true
-  become_user: root
   ansible.builtin.import_playbook: opensuse/install.yml
