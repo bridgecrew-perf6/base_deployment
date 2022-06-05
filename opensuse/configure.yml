@@ -5,7 +5,7 @@
     wanted_repos:
       hardware:
         - name: hardware
-        - repo: 'https://mirrorcache.opensuse.org/repositories/hardware/openSUSE_Tumbleweed/'
+        - repo: 'https://mirrorcache-au.opensuse.org/repositories/hardware/openSUSE_Tumbleweed/'
       dotnet:
         - name: dotnet
         - repo: 'https://packages.microsoft.com/opensuse/15/prod/'
