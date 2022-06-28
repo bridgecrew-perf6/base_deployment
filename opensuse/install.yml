@@ -9,9 +9,11 @@
         - zsh
         - gcc
         - gcc-c++
+        - clang
         - git
         - make
-        - cmake
+        - meson
+        - ninja
       packaging:
         - osc
       office:
@@ -27,8 +29,6 @@
         - qemu-kvm
         - libvirt
         - virt-manager
-      tex:
-        - gummi
       recording:
         - obs-studio
         - handbrake-gtk
